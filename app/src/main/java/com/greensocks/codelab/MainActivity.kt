@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -19,20 +21,27 @@ import com.greensocks.codelab.ui.theme.CodeLabTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val list = (1..1000).toList()
         setContent {
             MyApp {
-                MainActivityContent()
+                MainActivityContent(list)
             }
         }
     }
 }
 
 @Composable
-fun MainActivityContent() {
+fun MainActivityContent(list: List<Int>) {
     Column {
         Greeting("ANA ARE MERE")
         Divider(color = Color.Blue)
         Greeting("BIANCA ARE BANCA")
+        Divider(color = Color.Blue)
+        LazyColumn() {
+            items(list) {
+                Text(text = it.toString())
+            }
+        }
     }
 }
 
@@ -54,5 +63,8 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MyApp { Greeting("YOLLOLOLOLOL") }
+    MyApp {
+        val list = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
+        MainActivityContent(list)
+    }
 }
