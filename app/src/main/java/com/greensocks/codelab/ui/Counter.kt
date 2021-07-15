@@ -8,7 +8,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
 @Composable
 fun Counter(count: Int, updateCount: (Int) -> Unit) {
     Button(onClick = { updateCount(count + 1) }) {
